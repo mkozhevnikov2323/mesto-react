@@ -2,16 +2,15 @@ import '../index.css';
 import './Header';
 import Header from './Header';
 import Main from './Main';
+import Footer from './Footer';
 
 function App() {
   return (
     <div className="page">
       <Header />
       <Main />
+      <Footer />
 
-      <footer className="footer">
-        <p className="footer__copyright">© 2022 Mesto Russia</p>
-      </footer>
       <div className="popup popup_action_edit-profile">
         <div className="popup__container">
           <h2 className="popup__title">Редактировать профиль</h2>
