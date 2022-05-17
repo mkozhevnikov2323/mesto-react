@@ -1,9 +1,9 @@
 import '../index.css';
-import './Header';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import Input from './Input';
 
 function App() {
   return (
@@ -11,52 +11,20 @@ function App() {
       <Header />
       <Main />
       <Footer />
-      <PopupWithForm
-        name="edit-profile"
-        title="Редактировать профиль"
-        btnText="Сохранить"
-      />
-      <PopupWithForm name="add-place" title="Новое место" btnText="Создать"/>
-      <PopupWithForm name="change-avatar" title="Обновить аватар" btnText="Сохранить"/>
+      <PopupWithForm name="edit-profile" title="Редактировать профиль" btnText="Сохранить">
+        <Input type="text" name="name" nameOfClass="name" minLength="2" maxLength="40" placeholder="" />
+        <Input type="text" name="about" nameOfClass="job" minLength="2" maxLength="200" placeholder="" />
+      </PopupWithForm>
+      <PopupWithForm name="add-place" title="Новое место" btnText="Создать">
+        <Input type="text" name="name" nameOfClass="place-name" minLength="2" maxLength="30" placeholder="Название" />
+        <Input type="url" name="link" nameOfClass="place-link" placeholder="Ссылка на картинку" />
+      </PopupWithForm>
+      <PopupWithForm name="change-avatar" title="Обновить аватар" btnText="Сохранить">
+        <Input type="url" name="avatar" nameOfClass="avatar-link" placeholder="Ссылка на аватар" />
+      </PopupWithForm>
       <PopupWithForm name="delete-place" title="Вы уверены?" btnText="Да"/>
 
-      {/* <div className="popup popup_action_edit-profile">
-        <div className="popup__container">
-          <h2 className="popup__title">Редактировать профиль</h2>
-          <form action="#" className="popup__form" novalidate>
-            <input type="text" name="name" className="popup__input popup__input_data_name" value="" required minlength="2" maxlength="40" />
-            <span className="popup__error"></span>
-            <input type="text" name="about" className="popup__input popup__input_data_job" value="" required minlength="2" maxlength="200" />
-            <span className="popup__error"></span>
-            <button type="submit" className="popup__save-btn">Сохранить</button>
-          </form>
-          <button className="popup__close-icon"></button>
-        </div>
-      </div> */}
-      {/* <div className="popup popup_action_add-place">
-        <div className="popup__container">
-          <h2 className="popup__title">Новое место</h2>
-          <form action="#" className="popup__form" novalidate>
-            <input type="text" name="name" className="popup__input popup__input_data_place-name" value="" placeholder="Название" required minlength="2" maxlength="30" />
-            <span className="popup__error"></span>
-            <input type="url" name="link" className="popup__input popup__input_data_place-link" value="" placeholder="Ссылка на картинку" required />
-            <span className="popup__error"></span>
-            <button type="submit" className="popup__save-btn">Создать</button>
-          </form>
-          <button className="popup__close-icon"></button>
-        </div>
-      </div> */}
-      {/* <div className="popup popup_action_change-avatar">
-        <div className="popup__container">
-          <h2 className="popup__title">Обновить аватар</h2>
-          <form action="#" className="popup__form" novalidate>
-            <input type="url" name="avatar" className="popup__input popup__input_data_avatar-link" value="" placeholder="Ссылка на аватар" required />
-            <span className="popup__error"></span>
-            <button type="submit" className="popup__save-btn">Сохранить</button>
-          </form>
-          <button className="popup__close-icon"></button>
-        </div>
-      </div> */}
+
       <div className="popup popup_action_show-place">
         <div className="popup__photo-container">
           <img src="#" alt="Фото достопримечательности" className="popup__photo" />
@@ -64,13 +32,6 @@ function App() {
           <button className="popup__close-icon"></button>
         </div>
       </div>
-      {/* <div className="popup popup_action_delete-place">
-        <div className="popup__container">
-          <h2 className="popup__title">Вы уверены?</h2>
-          <button className="popup__close-icon"></button>
-          <button type="submit" className="popup__save-btn">Да</button>
-        </div>
-      </div> */}
 
       <template id="place-template">
         <li className="element">
