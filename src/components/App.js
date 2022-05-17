@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import PopupWithImage from './PopupWithImage';
 import Input from './Input';
 
 function App() {
@@ -23,15 +24,9 @@ function App() {
         <Input type="url" name="avatar" nameOfClass="avatar-link" placeholder="Ссылка на аватар" />
       </PopupWithForm>
       <PopupWithForm name="delete-place" title="Вы уверены?" btnText="Да"/>
+      <PopupWithImage />
 
 
-      <div className="popup popup_action_show-place">
-        <div className="popup__photo-container">
-          <img src="#" alt="Фото достопримечательности" className="popup__photo" />
-          <h2 className="popup__photo-title">Домбай</h2>
-          <button className="popup__close-icon"></button>
-        </div>
-      </div>
 
       <template id="place-template">
         <li className="element">
