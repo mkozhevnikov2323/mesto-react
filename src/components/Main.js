@@ -1,16 +1,30 @@
+import { useState } from 'react';
+import { api } from '../utils/api';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
+
+  let [userName, setUserName] = useState('');
+  let [userDescription, setUserDescription] = useState('');
+  let [userAvatar, setUserAvatar] = useState('');
+
+  api.getUserInfo()
+    .then((result) => {
+      setUserName(result.name);
+      setUserDescription(result.about);
+      setUserAvatar(result.avatar);
+    })
+    .catch((err) => console.log(err));
 
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__avatar-container" onClick={onEditAvatar}>
-          <img src="#" alt="Фото профиля" className="profile__avatar" />
+          <img src={ `${userAvatar}` } alt="Фото профиля" className="profile__avatar" />
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">Жак-Ив Кусто</h1>
+          <h1 className="profile__name">{ `${userName}` }</h1>
           <button type="button" className="profile__edit-bth" onClick={onEditProfile}></button>
-          <p className="profile__profession">Исследователь океана</p>
+          <p className="profile__profession">{ `${userDescription}` }</p>
         </div>
         <button type="button" className="profile__add-btn" onClick={onAddPlace}></button>
       </section>
