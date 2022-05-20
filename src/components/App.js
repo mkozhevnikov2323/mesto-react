@@ -54,7 +54,7 @@ function App() {
 
 
 
-      <template id="place-template">
+      {/* <template id="place-template">
         <li className="element">
           <div className="element__rectangle">
             <img src="<%=require('./images/Trash.svg')%>" alt="Иконка удаления" className="element__trash" />
@@ -64,7 +64,7 @@ function App() {
             <div className="element__heart-counter">0</div>
           </div>
         </li>
-      </template>
+      </template> */}
 
     </div>
   );
