@@ -6,6 +6,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
   let [userName, setUserName] = useState('');
   let [userDescription, setUserDescription] = useState('');
   let [userAvatar, setUserAvatar] = useState('');
+  let [card, setCard] = useState('');
 
   api.getUserInfo()
     .then((result) => {
