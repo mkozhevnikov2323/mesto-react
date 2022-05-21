@@ -1,15 +1,17 @@
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
 
-function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
+function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
   let [userName, setUserName] = useState('');
   let [userDescription, setUserDescription] = useState('');
   let [userAvatar, setUserAvatar] = useState('');
   let [cards, setCards] = useState([]);
 
-  api.getUserInfo()
+  useEffect(() => {
+    api.getUserInfo()
     .then((result) => {
       setUserName(result.name);
       setUserDescription(result.about);
@@ -17,22 +19,20 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
     })
     .catch((err) => console.log(err));
 
-  api.getInitialCards()
-    .then((result) => {
-      const cardsFromServer = result.map((cardFromServer) => {
-        return {
-          link: cardFromServer.link,
-          likes: cardFromServer.likes,
-          name: cardFromServer.name,
-          key: cardFromServer._id
-        }
+    api.getInitialCards()
+      .then((result) => {
+        const cardsFromServer = result.map((cardFromServer) => {
+          return {
+            link: cardFromServer.link,
+            likes: cardFromServer.likes,
+            name: cardFromServer.name,
+            key: cardFromServer._id
+          }
+        })
+        setCards(cardsFromServer);
       })
-      setCards(cardsFromServer);
-      console.log(result)
-    })
-    .catch((err) => console.log(err));
-
-
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <main className="content">
@@ -51,7 +51,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar }) {
         <ul className="elements">
           {
             cards.map((card) => (
-              <Card {...card} key={card.key} />
+              <Card {...card} key={card.key} onClickPhoto={onCardClick}/>
             ))
           }
         </ul>

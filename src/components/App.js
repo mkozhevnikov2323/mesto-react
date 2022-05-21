@@ -1,3 +1,4 @@
+import React from 'react';
 import '../index.css';
 import Header from './Header';
 import Main from './Main';
@@ -12,6 +13,12 @@ function App() {
   let [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   let [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   let [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  let [selectedCard, setSelectedCard] = useState(false);
+
+  function handleCardClick() {
+    setSelectedCard(true);
+    console.log(selectedCard);
+  }
 
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
@@ -26,17 +33,18 @@ function App() {
   }
 
   function closeAllPopups() {
-    if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen) {
+    if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || selectedCard) {
       setIsEditAvatarPopupOpen(false);
       setIsEditProfilePopupOpen(false);
       setIsAddPlacePopupOpen(false);
+      setSelectedCard(false);
     }
   }
 
   return (
     <div className="page">
       <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
+      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} onCardClick={handleCardClick} />
       <Footer />
       <PopupWithForm name="edit-profile" title="Редактировать профиль" btnText="Сохранить" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
         <Input type="text" name="name" nameOfClass="name" minLength="2" maxLength="40" placeholder="" />
@@ -50,22 +58,7 @@ function App() {
         <Input type="url" name="avatar" nameOfClass="avatar-link" placeholder="Ссылка на аватар" />
       </PopupWithForm>
       <PopupWithForm name="delete-place" title="Вы уверены?" btnText="Да"/>
-      <PopupWithImage />
-
-
-
-      {/* <template id="place-template">
-        <li className="element">
-          <div className="element__rectangle">
-            <img src="<%=require('./images/Trash.svg')%>" alt="Иконка удаления" className="element__trash" />
-            <img src="#" alt="#" className="element__photo" />
-            <p className="element__place"></p>
-            <button type="button" className="element__heart"></button>
-            <div className="element__heart-counter">0</div>
-          </div>
-        </li>
-      </template> */}
-
+      <PopupWithImage isOpen={selectedCard} onClose={closeAllPopups}/>
     </div>
   );
 }
