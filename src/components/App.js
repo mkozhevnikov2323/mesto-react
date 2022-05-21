@@ -4,7 +4,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-import PopupWithImage from './PopupWithImage';
+import ImagePopup from './ImagePopup';
 import Input from './Input';
 import { useState } from 'react';
 
@@ -57,7 +57,7 @@ function App() {
         <Input type="url" name="avatar" nameOfClass="avatar-link" placeholder="Ссылка на аватар" />
       </PopupWithForm>
       <PopupWithForm name="delete-place" title="Вы уверены?" btnText="Да"/>
-      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
+      <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
     </div>
   );
 }
