@@ -37,21 +37,21 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
   return (
     <main className="content">
       <section className="profile">
-        <div className="profile__avatar-container" onClick={onEditAvatar}>
+        <div className="profile__avatar-container" onClick={ onEditAvatar }>
           <img src={ `${userAvatar}` } alt="Фото профиля" className="profile__avatar" />
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{ `${userName}` }</h1>
-          <button type="button" className="profile__edit-bth" onClick={onEditProfile}></button>
-          <p className="profile__profession">{ `${userDescription}` }</p>
+          <h1 className="profile__name">{ userName }</h1>
+          <button type="button" className="profile__edit-bth" onClick={ onEditProfile }></button>
+          <p className="profile__profession">{ userDescription }</p>
         </div>
-        <button type="button" className="profile__add-btn" onClick={onAddPlace}></button>
+        <button type="button" className="profile__add-btn" onClick={ onAddPlace }></button>
       </section>
       <section>
         <ul className="elements">
           {
             cards.map((card) => (
-              <Card card={card} key={card.key} onCardClick={onCardClick}/>
+              <Card card={ card } key={ card.key } onCardClick={ onCardClick }/>
             ))
           }
         </ul>
