@@ -13,7 +13,7 @@ function App() {
   let [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   let [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   let [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  let [selectedCard, setSelectedCard] = useState(false);
+  let [selectedCard, setSelectedCard] = useState({});
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -32,12 +32,10 @@ function App() {
   }
 
   function closeAllPopups() {
-    // if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || selectedCard) {
       setIsEditAvatarPopupOpen(false);
       setIsEditProfilePopupOpen(false);
       setIsAddPlacePopupOpen(false);
       setSelectedCard({});
-    // }
   }
 
   return (
