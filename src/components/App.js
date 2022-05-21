@@ -15,9 +15,8 @@ function App() {
   let [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   let [selectedCard, setSelectedCard] = useState(false);
 
-  function handleCardClick() {
-    setSelectedCard(true);
-    console.log(selectedCard);
+  function handleCardClick(card) {
+    setSelectedCard(card);
   }
 
   function handleEditAvatarClick() {
@@ -33,12 +32,12 @@ function App() {
   }
 
   function closeAllPopups() {
-    if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || selectedCard) {
+    // if (isEditProfilePopupOpen || isAddPlacePopupOpen || isEditAvatarPopupOpen || selectedCard) {
       setIsEditAvatarPopupOpen(false);
       setIsEditProfilePopupOpen(false);
       setIsAddPlacePopupOpen(false);
-      setSelectedCard(false);
-    }
+      setSelectedCard({});
+    // }
   }
 
   return (
@@ -58,7 +57,7 @@ function App() {
         <Input type="url" name="avatar" nameOfClass="avatar-link" placeholder="Ссылка на аватар" />
       </PopupWithForm>
       <PopupWithForm name="delete-place" title="Вы уверены?" btnText="Да"/>
-      <PopupWithImage isOpen={selectedCard} onClose={closeAllPopups}/>
+      <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
     </div>
   );
 }
