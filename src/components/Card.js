@@ -1,7 +1,7 @@
 import React from 'react';
 import trash from '../images/Trash.svg';
 
-function Card( {card, onCardClick} ) {
+function Card({ card, onCardClick }) {
 
   function handleClick() {
     onCardClick(card);

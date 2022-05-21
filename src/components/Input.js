@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Input(props) {
+function Input({ type, name, nameOfClass, minLength, maxLength, placeholder }) {
   return (
     <>
-      <input type={ `${props.type}` } name={ `${props.name}` } className={ `popup__input popup__input_data_${props.nameOfClass}` } minLength={ `${props.minLength}` } maxLength={ `${props.maxLength}` } placeholder={ `${props.placeholder}` } defaultValue="" required />
+      <input type={ `${type}` } name={ `${name}` } className={ `popup__input popup__input_data_${nameOfClass}` } minLength={ `${minLength}` } maxLength={ `${maxLength}` } placeholder={ `${placeholder}` } defaultValue="" required />
       <span className="popup__error"></span>
     </>
   )
