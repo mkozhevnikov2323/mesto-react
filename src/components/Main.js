@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
 
@@ -38,7 +37,7 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
     <main className="content">
       <section className="profile">
         <div className="profile__avatar-container" onClick={ onEditAvatar }>
-          <img src={ `${userAvatar}` } alt="Фото профиля" className="profile__avatar" />
+          <img src={ userAvatar } alt="Фото профиля" className="profile__avatar" />
         </div>
         <div className="profile__info">
           <h1 className="profile__name">{ userName }</h1>
