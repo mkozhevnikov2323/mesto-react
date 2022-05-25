@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
 
-  let [userName, setUserName] = useState('');
-  let [userDescription, setUserDescription] = useState('');
-  let [userAvatar, setUserAvatar] = useState('');
+  const currentUser = React.useContext(CurrentUserContext);
+  // let [userName, setUserName] = useState('');
+  // let [userDescription, setUserDescription] = useState('');
+  // let [userAvatar, setUserAvatar] = useState('');
   let [cards, setCards] = useState([]);
 
   useEffect(() => {
-    api.getUserInfo()
-    .then((result) => {
-      setUserName(result.name);
-      setUserDescription(result.about);
-      setUserAvatar(result.avatar);
-    })
-    .catch((err) => console.log(err));
+    // api.getUserInfo()
+    // .then((result) => {
+    //   setUserName(result.name);
+    //   setUserDescription(result.about);
+    //   setUserAvatar(result.avatar);
+    // })
+    // .catch((err) => console.log(err));
 
     api.getInitialCards()
       .then((result) => {
@@ -37,12 +39,12 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
     <main className="content">
       <section className="profile">
         <div className="profile__avatar-container" onClick={ onEditAvatar }>
-          <img src={ userAvatar } alt="Фото профиля" className="profile__avatar" />
+          <img src={ currentUser.avatar } alt="Фото профиля" className="profile__avatar" />
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{ userName }</h1>
+          <h1 className="profile__name">{ currentUser.name }</h1>
           <button type="button" className="profile__edit-bth" onClick={ onEditProfile }></button>
-          <p className="profile__profession">{ userDescription }</p>
+          <p className="profile__profession">{ currentUser.description }</p>
         </div>
         <button type="button" className="profile__add-btn" onClick={ onAddPlace }></button>
       </section>
