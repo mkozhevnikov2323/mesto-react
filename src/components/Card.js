@@ -2,7 +2,7 @@ import React from 'react';
 import trash from '../images/Trash.svg';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
-function Card({ card, onCardClick }) {
+function Card({ card, onCardClick, onCardLike, onDeleteButton }) {
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = (
@@ -17,13 +17,21 @@ function Card({ card, onCardClick }) {
     onCardClick(card);
   }
 
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
+  function handleDeleteCard() {
+    onDeleteButton(card);
+  }
+
   return (
     <li className="element">
       <div className="element__rectangle">
-        <img src={ trash } alt="Иконка удаления" className={ cardDeleteButtonClassName } />
+        <img src={ trash } alt="Иконка удаления" className={ cardDeleteButtonClassName } onClick={ handleDeleteCard } />
         <img src={ card.link } alt={ card.name } className="element__photo" onClick={ handleClick }/>
         <p className="element__place">{ card.name }</p>
-        <button type="button" className={ cardLikeButtonClassName }></button>
+        <button type="button" className={ cardLikeButtonClassName } onClick={ handleLikeClick }></button>
         <div className="element__heart-counter">{ card.likes.length }</div>
       </div>
     </li>

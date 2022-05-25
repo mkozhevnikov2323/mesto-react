@@ -40,18 +40,9 @@ class Api {
     })
   }
 
-  addLike(id) {
-    return this._createFetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: 'PUT',
-      headers: {
-        authorization: `${this._token}`
-      }
-    })
-  }
-
-  deleteLike(id) {
-    return this._createFetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: 'DELETE',
+  changeLikeCardStatus(id, isLiked) {
+    return fetch (`${this._baseUrl}/cards/${id}/likes`, {
+      method: `${isLiked ? 'PUT' : 'DELETE'}`,
       headers: {
         authorization: `${this._token}`
       }
