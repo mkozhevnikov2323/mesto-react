@@ -27,7 +27,10 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
             link: cardFromServer.link,
             likes: cardFromServer.likes,
             name: cardFromServer.name,
-            key: cardFromServer._id
+            key: cardFromServer._id,
+            owner: {
+              _id: cardFromServer.owner._id
+            }
           }
         })
         setCards(cardsFromServer);
