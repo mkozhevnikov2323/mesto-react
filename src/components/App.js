@@ -9,7 +9,7 @@ import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
 import { api } from '../utils/api';
-import CurrentUserContext from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function App() {
 
@@ -29,7 +29,9 @@ function App() {
         setCurrentUser(userInfoFromServer);
       })
       .catch((err) => console.log(err));
+  }, []);
 
+  React.useEffect(() => {
     api.getInitialCards()
       .then((cards) => {
         setCards(cards);
@@ -71,6 +73,9 @@ function App() {
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
