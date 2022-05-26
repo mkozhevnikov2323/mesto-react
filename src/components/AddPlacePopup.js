@@ -24,8 +24,30 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, showLoading}) {
 
   return (
     <PopupWithForm name="add-place" title="Новое место" btnText={showLoading ? 'Сохранение...' : 'Создать'} isOpen={ isOpen } onClose={ onClose } onSubmit={handleSubmit}>
-      <Input type="text" name="name" nameOfClass="place-name" minLength="2" maxLength="30" placeholder="Название" onChange={handleNameChange} />
-      <Input type="url" name="link" nameOfClass="place-link" placeholder="Ссылка на картинку" onChange={handleLinkChange} />
+      {/* <Input type="text" name="name" nameOfClass="place-name" minLength="2" maxLength="30" placeholder="Название" onChange={handleNameChange} />
+      <Input type="url" name="link" nameOfClass="place-link" placeholder="Ссылка на картинку" onChange={handleLinkChange} /> */}
+      <input
+        id="nameOfImage"
+        name="name"
+        type="text"
+        minLength="2"
+        maxLength="30"
+        placeholder="Название"
+        className="popup__input"
+        required
+        value={name || ""}
+        onChange={handleNameChange}/>
+      <span className="popup__error popup__error_visible nameOfImage-error" />
+      <input
+        id="linkOfImage"
+        name="link"
+        type="url"
+        placeholder="Ссылка на картинку"
+        className="popup__input"
+        required
+        value={link || ""}
+        onChange={handleLinkChange}/>
+      <span id="spanOfImage" className="popup__error popup__error_visible linkOfImage-error" />
     </PopupWithForm>
   );
 }

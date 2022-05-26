@@ -3,13 +3,11 @@ import '../index.css';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
 import DeletePopup from './DeletePopup';
 import ImagePopup from './ImagePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import EditProfilePopup from './EditProfilePopup';
 import AddPlacePopup from './AddPlacePopup';
-import Input from './Input';
 import { api } from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
@@ -107,7 +105,7 @@ function App() {
 
   function handleUpdateAvatar(data) {
     setShowLoading(true);
-    api.updateUserAvatar(data)
+    api.setUserAvatar(data)
       .then((data) => {
         setCurrentUser(data);
         closeAllPopups();
@@ -122,7 +120,7 @@ function App() {
 
   function handleAddPlaceSubmit(data) {
     setShowLoading(true);
-    api.addUserCard(data)
+    api.setNewCard(data)
       .then((res) => {
         setCards([res, ...cards]);
         closeAllPopups();
