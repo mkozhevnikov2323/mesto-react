@@ -9,7 +9,7 @@ function EditProfilePopup({onClose, isOpen, onUpdateUser, showLoading}) {
 
   React.useEffect(() => {
     setName(currentUser.name);
-    setDescription(currentUser.about);
+    setDescription(currentUser.description);
 
   }, [currentUser]);
 
@@ -25,7 +25,7 @@ function EditProfilePopup({onClose, isOpen, onUpdateUser, showLoading}) {
     e.preventDefault();
     onUpdateUser({
         name,
-        about: description,
+        description: description,
     });
   }
 
@@ -57,7 +57,7 @@ function EditProfilePopup({onClose, isOpen, onUpdateUser, showLoading}) {
           minLength="2"
           maxLength="200"
           className="popup__input"
-          placeholder="Профессиональная деятельность"
+          placeholder="Профессия"
           value={description || ""}
           onChange={handleDescriptionChange}/>
         <span className="popup__error popup__error_visible job-error" />

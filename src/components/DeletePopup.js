@@ -13,7 +13,7 @@ function DeletePopup({isOpen, onClose, showLoading, card, onCardDelete}) {
     <PopupWithForm
       name="areYouSureToDelete"
       title="Вы уверены?"
-      submitName={showLoading ? 'Удаление...' : 'Да'}
+      btnText={showLoading ? 'Удаление...' : 'Да'}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleDeleteClick} />

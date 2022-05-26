@@ -1,51 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { api } from '../utils/api';
+import React from 'react';
 import Card from './Card';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, cards, onDeleteButton }) {
 
   const currentUser = React.useContext(CurrentUserContext);
-  // let [userName, setUserName] = useState('');
-  // let [userDescription, setUserDescription] = useState('');
-  // let [userAvatar, setUserAvatar] = useState('');
-  // let [cards, setCards] = useState([]);
-
-  // function handleCardLike(card) {
-  //   const isLiked = card.likes.some(i => i._id === currentUser._id);
-  //   api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-  //       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
-  //   });
-  // }
-
-  // useEffect(() => {
-    // api.getUserInfo()
-    // .then((result) => {
-    //   setUserName(result.name);
-    //   setUserDescription(result.about);
-    //   setUserAvatar(result.avatar);
-    // })
-    // .catch((err) => console.log(err));
-
-  //   api.getInitialCards()
-  //     .then((result) => {
-  //       const cardsFromServer = result.map((cardFromServer) => {
-  //         return {
-  //           link: cardFromServer.link,
-  //           likes: cardFromServer.likes,
-  //           name: cardFromServer.name,
-  //           key: cardFromServer._id,
-  //           _id: cardFromServer._id,
-  //           owner: {
-  //             _id: cardFromServer.owner._id
-  //           }
-  //         }
-  //       })
-  //       setCards(cardsFromServer);
-  //       // setCards(cards);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
 
   return (
     <main className="content">
