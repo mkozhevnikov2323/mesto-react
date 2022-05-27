@@ -39,7 +39,7 @@ function App() {
   }, []);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i._id === currentUser._id);
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
@@ -48,7 +48,22 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-    console.log(isLiked)
+  }
+
+  function handleCardDelete(card) {
+    setShowLoading(true);
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((item) => item !== card));
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setShowLoading(false);
+      });
   }
 
   function handleCardClick(card) {
@@ -79,22 +94,6 @@ function App() {
     setIsDeletePopupOpen(false);
     setSelectedCard({});
     setSelectedCardToDelete({});
-  }
-
-  function handleCardDelete(card) {
-    setShowLoading(true);
-    api
-      .deleteCard(card._id)
-      .then(() => {
-        setCards((state) => state.filter((item) => item !== card));
-        closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(() => {
-        setShowLoading(false);
-      });
   }
 
   function handleUpdateUser(userData) {

@@ -23,8 +23,6 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, showLoading}) {
 
   return (
     <PopupWithForm name="add-place" title="Новое место" btnText={showLoading ? 'Сохранение...' : 'Создать'} isOpen={ isOpen } onClose={ onClose } onSubmit={handleSubmit}>
-      {/* <Input type="text" name="name" nameOfClass="place-name" minLength="2" maxLength="30" placeholder="Название" onChange={handleNameChange} />
-      <Input type="url" name="link" nameOfClass="place-link" placeholder="Ссылка на картинку" onChange={handleLinkChange} /> */}
       <input
         id="nameOfImage"
         name="name"

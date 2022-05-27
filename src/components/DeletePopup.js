@@ -8,7 +8,6 @@ function DeletePopup({isOpen, onClose, showLoading, card, onCardDelete}) {
     onCardDelete(card);
   }
 
-
   return (
     <PopupWithForm
       name="areYouSureToDelete"
