@@ -21,6 +21,11 @@ function AddPlacePopup({isOpen, onClose, onAddPlace, showLoading}) {
     });
   }
 
+  React.useEffect(() => {
+    setName('');
+    setLink('');
+  }, [isOpen]);
+
   return (
     <PopupWithForm name="add-place" title="Новое место" btnText={showLoading ? 'Сохранение...' : 'Создать'} isOpen={ isOpen } onClose={ onClose } onSubmit={handleSubmit}>
       <input
