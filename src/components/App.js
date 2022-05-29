@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../utils/api";
 import "../index.css";
 import Header from "./Header";
@@ -17,12 +17,12 @@ function App() {
   let [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   let [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   let [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  let [isDeletePopupOpen, setIsDeletePopupOpen] = React.useState(false);
+  let [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
   let [selectedCard, setSelectedCard] = useState({});
-  let [selectedCardToDelete, setSelectedCardToDelete] = React.useState({});
-  let [showLoading, setShowLoading] = React.useState(false);
+  let [selectedCardToDelete, setSelectedCardToDelete] = useState({});
+  let [showLoading, setShowLoading] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     api.getUserInfo()
       .then((userInfoFromServer) => {
         setCurrentUser(userInfoFromServer);
@@ -30,7 +30,7 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     api.getInitialCards()
       .then((cards) => {
         setCards(cards);
@@ -143,9 +143,6 @@ function App() {
         setShowLoading(false);
       });
   }
-
-  // console.log(cards);
-
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
